@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://l44so8biq3ob"]
+
+[ext_resource type="Script" uid="uid://d3uc7qbng1ora" path="res://scenes/main.gd" id="1_sugp2"]
+[ext_resource type="PackedScene" uid="uid://b57hgcl5pg74n" path="res://scenes/player/player.tscn" id="2_0wfyh"]
+[ext_resource type="Texture2D" uid="uid://cjgf0rmppjunf" path="res://assets/environment/back.png" id="2_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://my0plxkdxdyl" path="res://scenes/gui/gui.tscn" id="3_sugp2"]
+
+[node name="Main" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_sugp2")
+starting_map = "uid://61x8ss103xc8"
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.2, 0.2)
+scroll_offset = Vector2(-124, 7)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(319, 253)
+scale = Vector2(3, 3)
+texture = ExtResource("2_jyhfs")
+
+[node name="Player" parent="." instance=ExtResource("2_0wfyh")]
+position = Vector2(237, 184)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="GUI" parent="." instance=ExtResource("3_sugp2")]

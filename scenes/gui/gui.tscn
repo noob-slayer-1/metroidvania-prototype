@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://my0plxkdxdyl"]
+
+[ext_resource type="Texture2D" uid="uid://c6pemmm66d0n1" path="res://assets/ui/heart_ui_spritesheet.png" id="2_khrik"]
+[ext_resource type="Script" uid="uid://b2gwscvuq86kf" path="res://scenes/gui/health_ui.gd" id="2_x2qsw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjuye"]
+atlas = ExtResource("2_khrik")
+region = Rect2(140, 28, 87, 23)
+
+[node name="GUI" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Health" type="TextureRect" parent="Control"]
+layout_mode = 0
+anchor_left = 0.028125
+anchor_top = 0.035416666
+anchor_right = 0.215625
+anchor_bottom = 0.09791667
+texture = SubResource("AtlasTexture_fjuye")
+stretch_mode = 5
+script = ExtResource("2_x2qsw")
+metadata/_edit_use_anchors_ = true
