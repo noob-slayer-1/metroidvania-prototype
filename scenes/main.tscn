@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://l44so8biq3ob"]
+[gd_scene load_steps=6 format=3 uid="uid://l44so8biq3ob"]
 
 [ext_resource type="Script" uid="uid://d3uc7qbng1ora" path="res://scenes/main.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://b57hgcl5pg74n" path="res://scenes/player/player.tscn" id="2_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://cjgf0rmppjunf" path="res://assets/environment/back.png" id="2_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://my0plxkdxdyl" path="res://scenes/gui/gui.tscn" id="3_sugp2"]
+[ext_resource type="Script" uid="uid://q7b7yyi42c7l" path="res://scenes/vfx_handler.gd" id="5_tbgi4"]
 
 [node name="Main" type="Node2D"]
 texture_filter = 1
@@ -25,3 +26,6 @@ position = Vector2(237, 184)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="GUI" parent="." instance=ExtResource("3_sugp2")]
+
+[node name="FXHandler" type="Node2D" parent="."]
+script = ExtResource("5_tbgi4")
