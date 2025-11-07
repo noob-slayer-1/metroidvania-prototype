@@ -7,3 +7,6 @@ extends Node2D
 func apply_gravity(delta):
 	if not actor.is_on_floor() and not actor.is_in_knockback:
 		actor.velocity.y += gravity_strength * delta
+
+func set_gravity(value):
+	gravity_strength = value

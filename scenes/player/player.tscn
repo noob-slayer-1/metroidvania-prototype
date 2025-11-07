@@ -507,7 +507,12 @@ shape = SubResource("RectangleShape2D_dovo2")
 
 [node name="PlayerMovement" type="Node2D" parent="."]
 script = ExtResource("3_gmlin")
-jump_force = 280.0
+jump_height = 100.0
+
+[node name="CTTimer" type="Timer" parent="PlayerMovement"]
+process_callback = 0
+wait_time = 0.2
+one_shot = true
 
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource("4_lvxji")
