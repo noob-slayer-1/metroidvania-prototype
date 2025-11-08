@@ -11,7 +11,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	$Gravity.apply_gravity(delta)
-	$PlayerMovement.move()
+	$PlayerMovement.update()
 	$EffectHandler.update(delta)
 	
 	move_and_slide()
