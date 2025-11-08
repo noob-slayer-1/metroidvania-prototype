@@ -1,2 +1,3 @@
-A, D -> Move
-Left click -> Attack
+## A, D -> Move
+## Left click -> Attack
+## Space (hold) -> Jump
