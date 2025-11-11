@@ -9,6 +9,7 @@ const JUMP_TIME_DOWN = 0.4
 var last_facing_direction = Vector2.RIGHT
 var double_jump = false
 var prev_on_floor = false
+var can_controlled = true
 
 @onready var player: CharacterBody2D = get_owner()
 @onready var ct_timer = $CTTimer
@@ -18,10 +19,14 @@ var prev_on_floor = false
 @onready var gravity = $"../Gravity"
 
 
+func _ready() -> void:
+	Events.trap_hit.connect(_on_trap_hit)
+	Events.player_resetted.connect(_on_player_resetted)
+
 func update() -> void:
 	gravity.set_gravity(get_gravity())
 	
-	if not player.is_in_knockback:
+	if not player.is_in_knockback and can_controlled:
 		var input_velocity = Vector2(Input.get_axis(&"move_left", &"move_right"), 0)
 		player.velocity.x = move_speed * input_velocity.x
 		if input_velocity:
@@ -68,3 +73,13 @@ func handle_jump():
 
 func get_gravity():
 	return jump_gravity if player.velocity.y < 0.0 else fall_gravity
+
+func reset():
+	player.velocity = Vector2.ZERO
+	can_controlled = true
+
+func _on_trap_hit():
+	can_controlled = false
+
+func _on_player_resetted():
+	can_controlled = true

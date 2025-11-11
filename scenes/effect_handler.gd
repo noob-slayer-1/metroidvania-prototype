@@ -22,3 +22,6 @@ func apply_effect(effect: EffectData):
 		EffectType.KNOCKBACK:
 			actor.is_in_knockback = true
 			movement.apply_force(effect.data["direction"], effect.data["force"])
+
+func reset():
+	actor.is_in_knockback = false
