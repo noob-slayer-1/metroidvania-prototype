@@ -606,7 +606,7 @@ sources/1 = SubResource("TileSetAtlasSource_xolah")
 sources/2 = SubResource("TileSetAtlasSource_vi1px")
 sources/3 = SubResource("TileSetScenesCollectionSource_s7igm")
 
-[node name="TestMap1" type="Node2D"]
+[node name="TestMap2" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(2, 2)

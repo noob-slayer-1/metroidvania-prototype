@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var health: int = 0
+@onready var origin_health = health
 @onready var player = get_owner()
 @onready var collider = $"../CollisionShape2D"
 
@@ -14,3 +15,7 @@ func take_damage(damage: int):
 	$"../AnimationPlayer".play(&"hit")
 	if health == 0:
 		Events.player_health_depleted.emit()
+
+func reset():
+	health = origin_health
+	Events.player_health_changed.emit(health)

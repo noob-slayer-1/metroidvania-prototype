@@ -11,7 +11,7 @@ func _ready() -> void:
 	var start_point = map.get_node_or_null("StartPoint")
 	if start_point:
 		player.global_position = start_point.global_position
-	add_module("RoomTransitions.gd")
+	add_module("res://scripts/module/custom_transition.gd")
 	add_module("res://scripts/module/trap_reset.gd")
 	$FXHandler.effect_spawned.connect(_on_effect_spawned)
 
