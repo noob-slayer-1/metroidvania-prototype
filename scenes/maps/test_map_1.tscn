@@ -612,3 +612,7 @@ tile_set = SubResource("TileSet_oumxj")
 
 [node name="Skeleton" parent="." instance=ExtResource("5_rd1xp")]
 position = Vector2(516, 314)
+
+[node name="StartPoint" type="Marker2D" parent="."]
+position = Vector2(171, 319)
+gizmo_extents = 12.0

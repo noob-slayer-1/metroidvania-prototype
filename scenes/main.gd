@@ -8,6 +8,9 @@ func _ready() -> void:
 	MetSys.set_save_data()
 	room_loaded.connect(_on_room_loaded, CONNECT_DEFERRED)
 	load_room(starting_map)
+	var start_point = map.get_node_or_null("StartPoint")
+	if start_point:
+		player.global_position = start_point.global_position
 	add_module("RoomTransitions.gd")
 	
 	$FXHandler.effect_spawned.connect(_on_effect_spawned)
