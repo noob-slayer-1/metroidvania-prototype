@@ -22,6 +22,7 @@ var can_controlled = true
 func _ready() -> void:
 	Events.trap_hit.connect(_on_trap_hit)
 	Events.player_resetted.connect(_on_player_resetted)
+	Events.player_health_depleted.connect(_on_player_health_depleted)
 
 func update() -> void:
 	gravity.set_gravity(get_gravity())
@@ -83,3 +84,6 @@ func _on_trap_hit():
 
 func _on_player_resetted():
 	can_controlled = true
+
+func _on_player_health_depleted():
+	can_controlled = false
