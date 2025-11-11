@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=4 uid="uid://61x8ss103xc8"]
+[gd_scene load_steps=12 format=4 uid="uid://61x8ss103xc8"]
 
 [ext_resource type="Texture2D" uid="uid://tn0gtuf57t2x" path="res://assets/environment/tileset.png" id="1_40jhu"]
 [ext_resource type="Texture2D" uid="uid://bjpjcb14gilho" path="res://assets/environment/tileset-2.png" id="2_oxs5n"]
+[ext_resource type="PackedScene" uid="uid://bmclecjk75f5i" path="res://scenes/trap/trap_1.tscn" id="4_rd1xp"]
 [ext_resource type="Texture2D" uid="uid://t1ajgs7fnc75" path="res://assets/environment/tiledemo.png" id="4_wex6m"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="5_mhucw"]
 [ext_resource type="PackedScene" uid="uid://cxgnjk63yygny" path="res://scenes/enemy/skeleton.tscn" id="5_rd1xp"]
@@ -594,12 +595,16 @@ texture = ExtResource("4_wex6m")
 63:14/0 = 0
 64:14/0 = 0
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_qv43o"]
+scenes/1/scene = ExtResource("4_rd1xp")
+
 [sub_resource type="TileSet" id="TileSet_oumxj"]
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_kl2dh")
 sources/1 = SubResource("TileSetAtlasSource_8dxt0")
 sources/2 = SubResource("TileSetAtlasSource_mhucw")
+sources/3 = SubResource("TileSetScenesCollectionSource_qv43o")
 
 [node name="TestMap1" type="Node2D"]
 

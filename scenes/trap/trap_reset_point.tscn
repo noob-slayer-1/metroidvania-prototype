@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://0o6sfkr7p8km"]
+
+[ext_resource type="Script" uid="uid://bdhkax6w5pert" path="res://scenes/trap/trap_reset_point.gd" id="1_3v5o4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hb0rc"]
+
+[node name="TrapResetPoint" type="Node2D"]
+script = ExtResource("1_3v5o4")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_hb0rc")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

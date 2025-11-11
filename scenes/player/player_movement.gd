@@ -4,6 +4,7 @@ const JUMP_TIME_PEAK = 0.5
 const JUMP_TIME_DOWN = 0.4
 
 @export var jump_height = 128.0
+@export var move_speed = 300.0
 
 var last_facing_direction = Vector2.RIGHT
 var double_jump = false
@@ -22,7 +23,7 @@ func update() -> void:
 	
 	if not player.is_in_knockback:
 		var input_velocity = Vector2(Input.get_axis(&"move_left", &"move_right"), 0)
-		player.velocity.x = player.MOVE_SPEED * input_velocity.x
+		player.velocity.x = move_speed * input_velocity.x
 		if input_velocity:
 			last_facing_direction = input_velocity.normalized()
 		

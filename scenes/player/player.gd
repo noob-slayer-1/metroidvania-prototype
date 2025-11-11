@@ -1,20 +1,21 @@
 extends CharacterBody2D
 
-const GRAVITY = 980
-const MOVE_SPEED = 300
-
 var is_in_knockback: bool = false
+var can_controlled = true
 
 
 func _ready() -> void:
 	Events.player_health_depleted.connect(_on_health_depleted)
+	Events.trap_hit.connect(_on_trap_hit)
+	Events.player_resetted.connect(_on_player_resetted)
 
 func _physics_process(delta: float) -> void:
-	$Gravity.apply_gravity(delta)
-	$PlayerMovement.update()
-	$EffectHandler.update(delta)
-	
-	move_and_slide()
+	if can_controlled:
+		$Gravity.apply_gravity(delta)
+		$PlayerMovement.update()
+		$EffectHandler.update(delta)
+		
+		move_and_slide()
 
 func receive_attack(attack_data: AttackData):
 	$Health.take_damage(attack_data.DAMAGE)
@@ -36,3 +37,9 @@ func _on_health_depleted():
 	$EffectHandler.ignore_effect = true
 	await get_tree().process_frame
 	$EffectHandler.ignore_effect = false
+
+func _on_trap_hit():
+	can_controlled = false
+
+func _on_player_resetted():
+	can_controlled = true
