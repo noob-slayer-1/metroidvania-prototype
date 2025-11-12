@@ -1,8 +1,7 @@
 extends CharacterBody2D
 
-enum State { IDLE, CHASE }
+enum State { IDLE, CHASE, KNOCKBACK }
 
-var is_in_knockback = false
 var current_state = State.IDLE
 var player_detected = false
 @onready var movement = $Movement
@@ -15,9 +14,18 @@ func _physics_process(delta: float) -> void:
 			idle()
 		State.CHASE:
 			chase()
+		State.KNOCKBACK:
+			if not $EffectHandler.is_on_knockback():
+				if player_detected:
+					current_state = State.CHASE
+				else :
+					current_state = State.IDLE
+			
+			$EffectHandler.update_knockback(delta)
 	
+	if $EffectHandler.is_on_knockback():
+		current_state = State.KNOCKBACK
 	$Gravity.apply_gravity(delta)
-	$EffectHandler.update(delta)
 	
 	move_and_slide()
 
