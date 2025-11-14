@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 enum State { IDLE, RUN, JUMP, FALL, DOUBLE_JUMP, KNOCKBACK }
 var _current_state: State
-var _abilities: Array[StringName] = [&"double_jump"]
+var _abilities: Array[StringName] = []
 
 
 func _ready() -> void:
@@ -73,6 +73,10 @@ func receive_attack(attack_data: AttackData):
 	$Health.take_damage(attack_data.DAMAGE)
 	for effect in attack_data.effects:
 		$EffectHandler.apply_effect(effect)
+
+func receive_ability(ability: StringName):
+	if not ability in _abilities:
+		_abilities.append(ability)
 
 func reset():
 	$Health.reset()
