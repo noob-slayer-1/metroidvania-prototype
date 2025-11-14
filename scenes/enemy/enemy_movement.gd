@@ -5,8 +5,7 @@ extends Node2D
 
 
 func move(direction):
-	if not enemy.is_in_knockback:
-		enemy.velocity.x = move_speed * direction.x
+	enemy.velocity.x = move_speed * direction.x
 
 func apply_force(direction: Vector2, force: float):
 	enemy.velocity = direction * force
