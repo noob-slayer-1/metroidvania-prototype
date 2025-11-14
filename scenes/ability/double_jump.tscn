@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://dall3unnqowy6"]
+
+[ext_resource type="Script" uid="uid://dnx6tx5v85i7v" path="res://scenes/ability/double_jump.gd" id="1_00gja"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fsr6g"]
+size = Vector2(115, 32)
+
+[node name="DoubleJump" type="Node2D"]
+script = ExtResource("1_00gja")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -57.5
+offset_top = -16.0
+offset_right = 57.5
+offset_bottom = 16.0
+color = Color(0.58, 0.58, 0.58, 1)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.19, 1, 0.8514999, 1)
+text = "Double Jump"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_fsr6g")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
